@@ -1,4 +1,8 @@
-<% @items.each do |item| %>
-  <h2><%= link_to item.title, item %></h2>
-  <p><%= truncate(item.description, length:400) { link_to "Read more...", item } %></p>
+<% if user_signed_in? %>
+  <% @items.each do |item| %>
+    <h2><%= link_to item.title, item %></h2>
+    <p><%= truncate(item.description, length:400) { link_to "Read more...", item } %></p>
+  <% end %>
+<% else %>
+  <%= render 'welcome_page' %>
 <% end %>
